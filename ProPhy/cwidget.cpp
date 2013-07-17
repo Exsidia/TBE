@@ -23,8 +23,14 @@ void cWidget::createRight()
     eDistance = new QLineEdit(tr("0"));
     eVoltage = new QLineEdit(tr("0"));
     eInduct = new QLineEdit(tr("0"));
+    QRegExp rx("^[0-9]*[\\.|,]{1}[0-9]*$");
+    QValidator *validator = new QRegExpValidator(rx,this);
+    eDistance->setValidator(validator);
+    eVoltage->setValidator(validator);
+    eInduct->setValidator(validator);
     bStart = new QPushButton(tr("осяй"));
     bStop = new QPushButton(tr("ярно"));
+    bStop->setDisabled(1);
     rightLayout = new QGridLayout;
     rightLayout->addWidget(lDistance,0,0,1,2);
     rightLayout->addWidget(eDistance,1,0,1,2);

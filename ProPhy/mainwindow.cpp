@@ -8,7 +8,7 @@ MainWindow::MainWindow()
     createLayout();
     createActions();
     createMenus();
-    resize(700,500);
+    resize(1000,700);
     setWindowTitle(tr("Движение"));
 }
 

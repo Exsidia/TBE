@@ -5,13 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 class QAction;
-class QListWidget;
 class QMenu;
-class QPushButton;
-class QLabel;
-class QLineEdit;
-class QGroupBox;
-class QHBoxLayout;
 QT_END_NAMESPACE
 
 class GLWidget;
@@ -35,11 +29,7 @@ private:
     QMenu *fileMenu;
     QMenu *helpMenu;
     QMenu *quitMenu;
-    QPushButton *one;
-    QPushButton *two;
-    QPushButton *three;
     cWidget *ccWidget;
-    //QHBoxLayout *mainLayout;
     QAction *aboutAct;
     QAction *authorsAct;
     QAction *quitAct;
