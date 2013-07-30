@@ -2,12 +2,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     glwidget.cpp \
-    cwidget.cpp
+    cwidget.cpp \
+    gldark.cpp
 
 HEADERS += \
     mainwindow.h \
     glwidget.h \
-    cwidget.h
+    cwidget.h \
+    gldark.h
 QT           += opengl
 
 OTHER_FILES += \

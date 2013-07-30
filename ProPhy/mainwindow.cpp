@@ -3,12 +3,14 @@
 #include "glwidget.h"
 #include "cwidget.h"
 
+
 MainWindow::MainWindow()
 {
     createLayout();
     createActions();
     createMenus();
-    resize(1000,700);
+    resize(900,600);
+    move(200,100);
     setWindowTitle(tr("Движение"));
 }
 
@@ -36,11 +38,17 @@ void MainWindow::createActions()
     authorsAct = new QAction(tr("&Авторы"), this);
     authorsAct->setStatusTip(tr("Авторы"));
     connect(authorsAct, SIGNAL(triggered()),this, SLOT(authors()));
+    highAct = new QAction(tr("Высокое качество"),this);
+    medAct = new QAction(tr("Среднее качество"), this);
+    lowAct = new QAction(tr("Низкое качество"), this);
 }
 
 void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&Файл"));
+    fileMenu->addAction(highAct);
+    fileMenu->addAction(medAct);
+    fileMenu->addAction(lowAct);
     helpMenu = menuBar()->addMenu(tr("&Помощь(?)"));
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(authorsAct);

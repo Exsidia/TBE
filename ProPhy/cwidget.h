@@ -4,6 +4,7 @@
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
+class QAction;
 class QPushButton;
 class QLabel;
 class QLineEdit;
@@ -20,6 +21,10 @@ class cWidget:public QWidget
     Q_OBJECT
 public:
     cWidget();
+private slots:
+    void start();
+    void stop();
+    void pause();
 private:
     void createRight();
     void createHRight();
@@ -39,6 +44,9 @@ private:
     QVBoxLayout *rightVLayout;
     QGroupBox *rightGroup;
     QGridLayout *rightLayout;
+    QAction *startAct;
+    QAction *stopAct;
+    QAction *pauseAct;
 };
 
 #endif // CWIDGET_H

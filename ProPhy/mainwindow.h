@@ -30,6 +30,9 @@ private:
     QMenu *helpMenu;
     QMenu *quitMenu;
     cWidget *ccWidget;
+    QAction *highAct;
+    QAction *medAct;
+    QAction *lowAct;
     QAction *aboutAct;
     QAction *authorsAct;
     QAction *quitAct;
