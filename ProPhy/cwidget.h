@@ -22,11 +22,11 @@ class cWidget:public QWidget
 public:
     cWidget();
 private slots:
-    void start();
+    void start(); //анимация
     void stop();
     void pause();
 private:
-    void createRight();
+    void createRight(); //расположение элементов окна
     void createHRight();
 
     GLWidget *glWidget;

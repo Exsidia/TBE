@@ -17,13 +17,13 @@ class MainWindow:public QMainWindow
 public:
     MainWindow();
 private slots:
-    void about();
-    void authors();
-    void loading();
+    void about(); //окно "о программе"
+    void authors();//авторы
+    void loading();//изображение
 private:
-    void createActions();
-    void createMenus();
-    void createLayout();
+    void createActions(); //создание действий
+    void createMenus(); //создание меню
+    void createLayout();//дизайн
 
     GLWidget *glWidget;
     QMenu *fileMenu;

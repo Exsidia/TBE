@@ -6,31 +6,31 @@
 
 MainWindow::MainWindow()
 {
-    createLayout();
+    createLayout(); //инициализация функций для работы
     createActions();
     createMenus();
     resize(900,600);
     move(200,100);
-    setWindowTitle(tr("Движение"));
+    setWindowTitle(tr("Моделирование движения электрона методом магнитой фокусировки"));
 }
 
-void MainWindow::about()
+void MainWindow::about() //окно "о программе"
 {
     QMessageBox::about(this,tr("О программе"),
                        tr("Моделирование движения элетрона и прочее..."));
 }
 
-void MainWindow::loading()
+void MainWindow::loading() //для загрузки изначальной картинки
 {
 
 }
 
-void MainWindow::authors()
+void MainWindow::authors()//окно "авторы"
 {
 
 }
 
-void MainWindow::createActions()
+void MainWindow::createActions() //создание действий
 {
     aboutAct = new QAction(tr("&О программе"), this);
     aboutAct->setStatusTip(tr("Инструкция"));
@@ -41,22 +41,25 @@ void MainWindow::createActions()
     highAct = new QAction(tr("Высокое качество"),this);
     medAct = new QAction(tr("Среднее качество"), this);
     lowAct = new QAction(tr("Низкое качество"), this);
+    quitAct = new QAction(tr("Выход"),this);
+    connect(quitAct,SIGNAL(triggered()),this,SLOT(close()));
 }
 
-void MainWindow::createMenus()
+void MainWindow::createMenus() //меню
 {
     fileMenu = menuBar()->addMenu(tr("&Файл"));
     fileMenu->addAction(highAct);
     fileMenu->addAction(medAct);
     fileMenu->addAction(lowAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(quitAct);
     helpMenu = menuBar()->addMenu(tr("&Помощь(?)"));
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(authorsAct);
-    quitMenu = menuBar()->addMenu(tr("Выход"));
 }
 
-void MainWindow::createLayout()
+void MainWindow::createLayout() //дизайн мейна
 {
-    ccWidget = new cWidget;
+    ccWidget = new cWidget; //описан в cwidget.h
     setCentralWidget(ccWidget);
 }

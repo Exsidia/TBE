@@ -8,7 +8,10 @@
 
 GLfloat rtri = 0.0f;
 GLfloat zxz = 0.0f;
-
+float ambient[4] = {0.5, 0.5, 0.5, 1};//свет
+float poso[4] = {3,3,3,1};
+float dir[3] = {-1,-1,-1};
+GLfloat mat_specular[] = {1,1,1,1 }; //материал
 GLuint texture[1];
 void change();
 GLWidget::GLWidget(GLfloat Lenght)
@@ -22,7 +25,7 @@ GLWidget::GLWidget(GLfloat Lenght)
     scale = 1.0f;
 }
 
-void GLWidget::initializeGL()
+void GLWidget::initializeGL() //инициализация OpenGL
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -32,6 +35,11 @@ void GLWidget::initializeGL()
     glClearColor(1.0f,1.0f,1.0f,0.0f);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialf(GL_FRONT, GL_SHININESS, 128.0);
+    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
     glDepthFunc(GL_LEQUAL);
     glEnable(GL_CLIP_PLANE0);
     glEnable(GL_BLEND);
@@ -44,13 +52,18 @@ void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
+    glEnable(GL_LIGHT0);
+    glLightfv(GL_LIGHT0, GL_POSITION, poso); //источники света
+    glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, dir);
     glTranslatef(-1.0f,0.0f,-15.0f);
     glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
     glRotatef(rtri,0.0f,1.0f,0.0f);
     glScalef(scale,scale,scale);
-    if(timer->isActive())
+    glRotatef(90.0f,0.0f,1.0f,0.0f);
+
+    if(timer->isActive()) //проверка анимации
     {
         templar->draw(lenght, true);
         rtri+=0.2f;
@@ -125,7 +138,20 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void GLWidget::wheelEvent(QWheelEvent *event)
 {
-    event->delta() > 0 ? scale += scale*0.1f : scale -= scale*0.1f;
+    if(scale>0.8)
+    {
+    if(event->delta()<0)
+    {
+        scale-=scale*0.05f;
+    }
+    else
+    {
+        scale += scale*0.05f;
+    }
+    }
+    else
+        if(event->delta()>0)
+            scale+=scale*0.05f;
     updateGL();
 }
 

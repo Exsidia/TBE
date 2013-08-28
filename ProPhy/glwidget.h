@@ -8,13 +8,13 @@ class GLWidget: public QGLWidget
 {
     Q_OBJECT
 public:
-    GLWidget(GLfloat lenght);
-    void setL(float l);
+    GLWidget(GLfloat lenght); //конструктор с параметром длины
+    void setL(float l); //изменение длины
 public slots:
-    void setXRotation(int angle);
+    void setXRotation(int angle); //повороты
     void setYRotation(int angle);
     void setZRotation(int angle);
-    void StartAn();
+    void StartAn(); //анимация
     void StopAn();
 signals:
     void xRotationChanged(int angle);

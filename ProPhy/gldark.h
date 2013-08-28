@@ -7,12 +7,11 @@
 #include <gl/gl.h>
 #include <gl/GLU.h>
 
-
 class dark:public QGLWidget
 {
     Q_OBJECT
 public:
-    void draw(GLfloat lenght,bool act);
+    void draw(GLfloat lenght,bool act); //длина и анимация
     dark();
 private:
     GLfloat x;
